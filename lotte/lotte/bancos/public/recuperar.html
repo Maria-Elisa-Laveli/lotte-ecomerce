@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Recuperar Senha</title>
+  <link rel="stylesheet" href="css/recuperar.css" />
+</head>
+<body>
+  <div class="container">
+    <h2>Recuperar Senha</h2>
+    <form id="recuperarForm">
+      <input type="email" name="email" placeholder="Digite seu e-mail cadastrado" required />
+      <button type="submit">Enviar link de redefinição</button>
+    </form>
+    <p id="msg"></p>
+  </div>
+
+  <script>
+    document.getElementById("recuperarForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const email = e.target.email.value;
+
+        const res = await fetch("http://localhost:3000/recuperar", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ email }),
+});
+
+      const data = await res.json();
+      document.getElementById("msg").textContent = data.message || data.error;
+      document.getElementById("msg").style.color = res.ok ? "green" : "red";
+    });
+  </script>
+</body>
+</html>

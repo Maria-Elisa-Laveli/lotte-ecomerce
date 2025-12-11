@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lotte - Cosméticos</title>
+  <link rel="icon" type="image/png" href="laco.png">
+  <link rel="shortcut icon" href="laco.png" type="image/png">
+  <link rel="stylesheet" href="lotteinicial.css">
+</head>
+<body>
+
+  <!-- Cabeçalho -->
+  <header>
+    <div class="logo">
+      <img src="lotte.png" alt="Logo Lotte">
+    </div>
+
+    <nav class="menu">
+      <ul>
+        <li><a href="Diagnostico/diagnostico.html">Diagnóstico Online</a></li>
+        
+        <li><a href="bancos/public/admin.html">Admin</a></li>
+        <li><a href="Sobre/sobre.html">Sobre</a></li>
+      </ul>
+    </nav>
+
+    <div class="icons">
+      <a href="Busca/busca.html" class="icon">
+        <img class="busca" src="Busca/busca.png" alt="Busca">
+      </a>
+      <a href="Favoritos/favoritos.html" class="icon">
+        <img class="favoritos" src="Favoritos/favoritos.png" alt="Favoritos">
+      </a>
+     <a id="iconeConta" class="icon">
+  <img class="conta" src="bancos/conta.png" alt="Conta">
+</a>
+
+      <a href="Carrinho/carrinho.html" class="icon">
+        <img class="carrinho" src="Carrinho/3.png" alt="Carrinho">
+      </a>
+      <button class="hamburger">☰</button>
+    </div>
+  </header>
+
+  <!-- carrousel -->
+  <section class="carousel">
+    <div class="slides">
+      <div class="slide"><img src="Banner.png" alt="Banner 1"></div>
+      <div class="slide"><img src="banner2.jpg" alt="Banner 2"></div>
+      <div class="slide"><img src="banner3.jpg" alt="Banner 3"></div>
+      <div class="slide"><img src="banner4.jpg" alt="Banner 4"></div>
+      <div class="slide"><img src="banner5.jpg" alt="Banner 5"></div>
+      <div class="slide"><img src="banner8.jpg" alt="Banner 6"></div>
+    </div>
+
+        <button class="prev">&#10094;</button>
+    <button class="next">&#10095;</button>
+
+     <!-- bolinha -->
+<div class="indicadores">
+  <span class="indicador ativo" data-index="0"></span>
+  <span class="indicador" data-index="1"></span>
+  <span class="indicador" data-index="2"></span>
+  <span class="indicador" data-index="3"></span>
+  <span class="indicador" data-index="4"></span>
+  <span class="indicador" data-index="5"></span>
+</div>
+
+</section>
+
+<section class="produtos-section">
+  <h2 style="text-align:center; margin: 30px 0;">Produtos Disponíveis</h2>
+  <div class="produtos" id="homeProductList">
+    <div id="product-list" class="product-grid"></div>
+
+    <!-- Produtos serão inseridos aqui via JS -->
+  </div>
+
+  
+
+
+  </section>
+
+  <div id="popup-carrinho" class="popup-carrinho">
+  Produto adicionado ao carrinho! ❤️
+</div>
+
+  
+ 
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-logo">
+        <h2>L’otte</h2>
+        <p>Beleza que nasce do cuidado.</p>
+      </div>
+
+      <div class="footer-links">
+        <a href="#">Sobre</a>
+        <a href="#">Serviços</a>
+        <a href="#">Produtos</a>
+        <a href="#">Contato</a>
+      </div>
+
+      <div class="footer-socials">
+        <a href="#"><img src="instagram.jpg" alt="Instagram"></a>
+        <a href="#"><img src="face.jpg" alt="Facebook"></a>
+        <a href="#"><img src="ttk.jpg" alt="TikTok"></a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 L’otte. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- Script do carrossel -->
+  <script>
+const slidesContainer = document.querySelector('.slides');
+const slideElements = document.querySelectorAll('.slide');
+const prevBtn = document.querySelector('.prev');
+const nextBtn = document.querySelector('.next');
+const indicadores = document.querySelectorAll('.indicador');
+
+let currentIndex = 0;
+const totalSlides = slideElements.length;
+
+// Função para atualizar as bolihas
+function atualizarIndicadores() {
+    indicadores.forEach((indicador, index) => {
+        indicador.classList.toggle('ativo', index === currentIndex);
+    });
+}
+
+function goToSlide(index) {
+    //limita o índice dentro dos limites
+    currentIndex = (index + totalSlides) % totalSlides;
+    
+    //move cotainer
+    slidesContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+    
+    atualizarIndicadores(); // atualiza as bolinhas
+}
+
+function nextSlide() {
+    goToSlide(currentIndex + 1);
+}
+
+function prevSlide() {
+    goToSlide(currentIndex - 1);
+}
+
+//event listeners
+nextBtn.addEventListener('click', nextSlide);
+prevBtn.addEventListener('click', prevSlide);
+
+//event listeners para os indicadores 
+indicadores.forEach(indicador => {
+    indicador.addEventListener('click', (e) => {
+        const index = parseInt(e.target.getAttribute('data-index'));
+        goToSlide(index);
+    });
+});
+
+// autoplay (opcional0)
+let autoPlay = setInterval(nextSlide, 5000);
+
+// pausa o auto-play quando o mouse está sobre o carrossel
+const carousel = document.querySelector('.carousel');
+carousel.addEventListener('mouseenter', () => clearInterval(autoPlay));
+carousel.addEventListener('mouseleave', () => {
+    autoPlay = setInterval(nextSlide, 5000);
+});
+
+// inicia a priemira imagem
+goToSlide(0);
+
+
+  </script>
+  <script>
+async function verificarLogin() {
+  try {
+    const resposta = await fetch("http://localhost:3000/checkAuth", {
+      credentials: "include"
+    });
+
+    const resultado = await resposta.json();
+
+    if (resultado.autenticado) {
+      // Usuário já está logado → vai para a conta
+      window.location.href = "bancos/public/perfil.html";
+    } else {
+      // Não está logado → vai para login
+      window.location.href = "bancos/public/login.html";
+    }
+  } catch (erro) {
+    console.error("Erro ao verificar login:", erro);
+    window.location.href = "bancos/public/login.html";
+  }
+}
+
+document.getElementById("iconeConta").addEventListener("click", verificarLogin);
+
+
+
+</script>
+<script src="lotteinicial.js"></script>
+
+
+</body>
+</html>

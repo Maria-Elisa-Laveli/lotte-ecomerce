@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login</title>
+  <link rel="stylesheet" href="css/login.css" />
+</head>
+
+<body>
+  <div class="container">
+    <form id="formLogin" autocomplete="off">
+      <h2>Login</h2>
+
+      <div class="wrap-input">
+        <input class="input-form" type="email" name="email" id="email" required autocomplete="off" />
+        <label for="email">E-mail</label>
+      </div>
+
+      <div class="wrap-input">
+        <input class="input-form" type="password" name="senha" id="senha" required />
+        <label for="senha">Senha</label>
+      </div>
+
+      <div class="container-login-form-btn">
+        <button type="submit" class="login-form-btn">Login</button>
+      </div>
+
+      <ul class="login-utils">
+        <li><a href="recuperar.html" class="text2">Esqueceu sua senha?</a></li>
+        <li><a href="cadastro.html" class="text2">Criar conta</a></li>
+      </ul>
+    </form>
+  </div>
+<script>
+function mostrarMensagem(texto, tipo = "erro") {
+  const msg = document.getElementById("msg");
+  msg.textContent = texto;
+  msg.className = "msg show " + tipo;
+
+  setTimeout(() => {
+    msg.classList.remove("show");
+  }, 2500);
+}
+
+document.getElementById("formLogin").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const dados = Object.fromEntries(new FormData(e.target));
+
+  try {
+    const resposta = await fetch("http://localhost:3000/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(dados),
+      credentials: "include"
+    });
+
+    const resultado = await resposta.json();
+
+    if (!resposta.ok || resultado.error) {
+      mostrarMensagem(resultado.error || "Credenciais inválidas.", "erro");
+      return;
+    }
+
+    // 🌸 Transição suave ao fazer login com sucesso
+    const overlay = document.querySelector(".page-transition");
+    overlay.classList.add("active");
+
+    setTimeout(() => {
+      sessionStorage.setItem("userEmail", dados.email);
+      window.location.href = "perfil.html";
+    }, 500);
+
+  } catch (err) {
+    mostrarMensagem("Erro ao conectar com o servidor.", "erro");
+  }
+});
+</script>
+
+
+
+<div class="page-transition"></div>
+<div id="msg" class="msg"></div>
+
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Painel de Administração - L’otte</title>
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Painel de Administração</h1>
+
+    <form id="productForm">
+      <input type="text" id="name" placeholder="Nome do produto" required>
+      <input type="text" id="brand" placeholder="Marca" required>
+      <input type="text" id="price" placeholder="Preço (R$)" requiredinputmode="decimal" pattern="^\d+([,.]\d{0,2})?$"
+      title="Digite apenas números, com vírgula opcional. Ex: 34,99">
+      <input type="number" id="stock" placeholder="Quantidade em estoque" required>
+      <input type="text" id="volume" placeholder="Quantidade (ml/L)" required>
+      
+      <!-- categoria -->
+      <select id="category" required>
+        <option value="">Selecione a categoria</option>
+        <option value="shampoo">Shampoo</option>
+        <option value="condicionador">Condicionador</option>
+        <option value="mascara">Máscara</option>
+        <option value="oleo">Óleo</option>
+        <option value="creme">Creme</option>
+        <option value="serum">Sérum</option>
+        <option value="finalizador">Finalizador</option>
+        <option value="kits">Kits</option>
+        <option value="outros">Outros</option>
+      </select>
+      
+      <textarea id="description" placeholder="Descrição do produto" required></textarea>
+      <input type="url" id="image" placeholder="URL da imagem" required>
+
+      <button type="submit" id="submitBtn">Adicionar Produto</button>
+    </form>
+
+  
+    <h2>Produtos Cadastrados</h2>
+    <div id="productList" class="product-list"></div>
+  </div>
+  <button id="backBtn" style="margin-bottom: 20px; padding: 10px 20px; cursor: pointer;">
+    Voltar para a tela inicial
+ </button>
+
+  <script src="admin.js"></script>
+</body>
+</html>

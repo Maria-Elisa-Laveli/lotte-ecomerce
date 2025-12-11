@@ -1,0 +1,235 @@
+/* Reset mínimo */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #fffcf1;
+  color: #333;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* header simples */
+.fav-header {
+  padding: 12px 20px;
+  background: #fffcf1;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  align-items: center;
+}
+
+.fav-header .logo img {
+  height: 36px;
+}
+
+/* Conteúdo principal */
+.favorites-container {
+  flex: 1;
+  max-width: 1200px;
+  margin: 28px auto;
+  padding: 0 20px 80px; /* espaço para o botão fixo */
+  width: 100%;
+}
+
+.favorites-title {
+  font-size: 28px;
+  margin-bottom: 18px;
+  color: #222;
+}
+
+/* Área onde cards ou mensagem ficam */
+.favorites-area {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+/* Card simples de produto (se quiser depois já fica pronto) */
+.product-card {
+  position: relative;
+  background: white;
+  border-radius: 12px;
+  padding: 14px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  text-align: center;
+}
+
+.product-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.product-card h3 {
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+
+.product-card .price {
+  color: #ff6b9d;
+  font-weight: 700;
+  margin-top: 6px;
+}
+
+/* Estado vazio / mensagem */
+.empty-favorites {
+  grid-column: 1 / -1;
+  background: white;
+  border-radius: 12px;
+  padding: 40px;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+}
+
+.empty-favorites .icon {
+  font-size: 48px;
+  display: block;
+  margin-bottom: 12px;
+}
+
+/* Botão fixo no canto inferior direito */
+.back-button {
+  position: fixed;
+  right: 20px;
+  bottom: 230px;
+  background: #d0665e;
+  color: white;
+  padding: 12px 18px;
+  border-radius: 999px;
+  text-decoration: none;
+  box-shadow: 0 8px 24px rgba(255,107,157,0.18);
+  font-weight: 700;
+  z-index: 1000;
+  transition: transform .14s ease, box-shadow .14s ease;
+}
+
+.back-button:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(255,107,157,0.25); }
+
+/*foteerrrr*/
+.footer {  
+    border-top: 1px solid #e2cfc3;
+    background-color: #e7e0d3;
+    color: #4a3f35; 
+    padding: 40px 20px 10px;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  .footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+  }
+  
+  .footer-logo h2 {
+    font-family: "Playfair Display", serif;
+    font-size: 28px;
+    color: #d4817b; 
+    margin-bottom: 5px;
+  }
+  
+  .footer-logo p {
+    font-size: 14px;
+    color: #6b5b4b;
+  }
+  
+  .footer-links {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+  }
+  
+  .footer-links a {
+    text-decoration: none;
+    color: #4a3f35;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-links a:hover {
+    color: #d7a89e; 
+  }
+  
+  .footer-socials a img {
+    width: 25px;
+    height: 25px;
+    margin: 0 8px;
+    transition: transform 0.3s ease;
+  }
+  
+  .footer-socials a:hover img {
+    transform: scale(1.15);
+  }
+  
+  .footer-bottom {
+    margin-top: 25px;
+    font-size: 13px;
+    color: #6b5b4b;
+  }
+  
+  .product-card {
+  position: relative;
+  background: white;
+  border-radius: 12px;
+  padding: 14px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  text-align: center;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.1);
+}
+.product-card img {
+  width: 100%;
+  height: 200px;      /* defina a altura fixa para todas */
+  object-fit: contain; /* NÃO corta — apenas ajusta */
+  background-color: #f5f5f5; /* opcional: fundo neutro */
+  padding: 10px;      /* opcional: deixa a imagem “respirar” */
+}
+
+.btn-favorito {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: white;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  color: #bbb;
+  transition: 0.25s;
+}
+
+.btn-favorito.favoritado {
+  background: #ff6b9d;
+  color: white;
+  transform: scale(1.1);
+}
+
+.remove-btn {
+  margin-top: 10px;
+  padding: 8px 12px;
+  background-color: #d9534f;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.remove-btn:hover {
+  background-color: #c9302c;
+}

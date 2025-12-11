@@ -1,0 +1,178 @@
+/* ===== Reset Básico ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+
+/* ===== Fundo ===== */
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f5f2e8aa;
+}
+
+/* ===== Container principal ===== */
+.container {
+  width: 100%;
+  max-width: 380px;
+  background: #fffcf1;
+  padding: 40px 32px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+}
+
+/* ===== Título ===== */
+h2 {
+  font-size: 26px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 30px;
+  color: #7b4f35;
+}
+
+/* ===== Inputs ===== */
+.wrap-input {
+  position: relative;
+  margin-bottom: 28px;
+}
+
+.input-form {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1.5px solid #ddd;
+  border-radius: 12px;
+  font-size: 16px;
+  background: #fafafa;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.input-form:focus {
+  border-color: #d88c8c;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(216, 140, 140, 0.25);
+}
+
+/* ===== Label flutuante ===== */
+.wrap-input label {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 15px;
+  color: #aaa;
+  pointer-events: none;
+  background: #fff;
+  padding: 0 4px;
+  transition: 0.3s ease;
+}
+
+.input-form:focus + label,
+.input-form:not(:placeholder-shown) + label {
+  top: -12px;
+  font-size: 13px;
+  color: #d88c8c;
+  font-weight: 500;
+}
+
+/* ===== Botão Login ===== */
+.container-login-form-btn {
+  margin-top: 10px;
+}
+
+.login-form-btn {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(90deg, #d88c8c, #c47171);
+  color: #fff;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.login-form-btn:hover {
+  background: linear-gradient(90deg, #c47171, #b15a5a);
+  transform: translateY(-2px);
+}
+
+/* ===== Links extras ===== */
+.login-utils {
+  list-style: none;
+  margin-top: 25px;
+  text-align: center;
+}
+
+.login-utils li {
+  margin: 8px 0;
+}
+
+.text2 {
+  color: #d88c8c;
+  font-size: 15px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.text2:hover {
+  color: #b15a5a;
+  text-decoration: underline;
+}
+
+/* ===== Transição suave entre páginas ===== */
+/* ===== Transição ===== */
+.page-transition {
+  position: fixed;
+  inset: 0;
+  background: #f5f2e8;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .4s ease;
+  z-index: 9998;
+}
+
+.page-transition.active {
+  opacity: 1;
+}
+
+.msg {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #b15a5a;
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 500;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .4s ease;
+  z-index: 9999;
+}
+
+.msg.show {
+  opacity: 1;
+}
+
+.msg.ok {
+  background: #74b172;
+}
+
+.msg.erro {
+  background: #b15a5a;
+}

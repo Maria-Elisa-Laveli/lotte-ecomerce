@@ -1,0 +1,85 @@
+/* ===== Reset ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* ===== Fundo ===== */
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Centralizado verticalmente */
+  background: #f5f2e8aa;
+}
+
+/* ===== Container ===== */
+.container {
+  width: 100%;
+  max-width: 380px;
+  background: #fffcf1;
+  padding: 35px 30px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+}
+
+.container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+h2 {
+  font-size: 26px;
+  font-weight: 700;
+  color: #7b4f35;
+  margin-bottom: 30px;
+}
+
+/* ===== Input ===== */
+input[type="password"] {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1.5px solid #ddd;
+  border-radius: 12px;
+  font-size: 16px;
+  background: #fafafa;
+  outline: none;
+  margin-bottom: 25px;
+  transition: all 0.3s ease;
+}
+
+input[type="password"]:focus {
+  border-color: #ffc8c8;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(216, 140, 140, 0.25);
+}
+
+/* ===== Botão ===== */
+button {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(90deg, #d88c8c, #c47171);
+  color: #fff;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background: linear-gradient(90deg, #c47171, #b15a5a);
+  transform: translateY(-2px);
+}
+
+/* ===== Mensagem ===== */
+#msg {
+  margin-top: 20px;
+  font-size: 15px;
+  font-weight: 500;
+}

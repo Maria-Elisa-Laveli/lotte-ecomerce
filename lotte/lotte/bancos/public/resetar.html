@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Redefinir Senha</title>
+  <link rel="stylesheet" href="css/resetar.css" />
+</head>
+<body>
+  <div class="container">
+    <h2>Redefinir Senha</h2>
+    <form id="resetarForm">
+      <input type="password" name="novaSenha" placeholder="Digite a nova senha" required />
+      <button type="submit">Redefinir</button>
+    </form>
+    <p id="msg"></p>
+  </div>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const token = urlParams.get("token");
+
+    document.getElementById("resetarForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const novaSenha = e.target.novaSenha.value;
+
+      const res = await fetch("/resetar", {  // aqui foi alterado
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ token, novaSenha })
+      });
+
+      const data = await res.json();
+      document.getElementById("msg").textContent = data.message || data.error;
+      document.getElementById("msg").style.color = res.ok ? "green" : "red";
+    });
+  </script>
+</body>
+</html>

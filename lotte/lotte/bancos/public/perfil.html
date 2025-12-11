@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meu Perfil - L’otte</title>
+  <link rel="stylesheet" href="css/perfil.css" />
+</head>
+<body>
+ <header class="header">
+  <a href="../../index.html" class="btn-home">Início</a>
+  <img src="lotte-removebg-preview.png" alt="Logo L’otte" class="logo">
+</header>
+
+<div class="profile-container">
+  <aside class="sidebar">
+    <div class="in">  
+    
+    
+    </div>
+    <h2 id="usernameDisplay">Usuário</h2>
+    <p id="emailDisplay">email@exemplo.com</p>
+  </aside>
+
+  <main class="main-content">
+    <nav class="tabs">
+     
+      <button class="tab active" data-tab="perfil">Perfil</button>
+      
+    
+      <button id="btnEditarPerfil" class="btn-editar">Editar Perfil</button>
+       <button class="btn-logout" onclick="logout()">Sair</button>
+
+
+
+    </nav>
+
+    <section id="perfil" class="tab-content active">
+      <h3>Meus Dados</h3>
+      <br>
+      <label class="titu"><b>Nome Completo</b></label>
+      <div class="inputbox"><p id="nomeDisplay">Carregando...</p></div>
+
+      <label class="titu"><b>Telefone</b></label>
+      <div class="inputbox"><p id="telefoneDisplay">Carregando...</p></div>
+
+      <label class="titu"><b>Cidade</b></label>
+      <div class="inputbox"><p id="cidadeDisplay">Carregando...</p></div>
+
+      <label class="titu"><b>Estado</b></label>
+      <div class="inputbox"><p id="estadoDisplay">Carregando...</p></div>
+
+      <label class="titu"><b>Endereço</b></label>
+      <div class="inputbox"><p id="enderecoDisplay">Carregando...</p></div>
+    </section>
+
+    <section id="favoritos" class="tab-content">
+      <h3>Favoritos</h3>
+      <div id="favoritosList">Nenhum produto favoritado ainda.</div>
+    </section>
+
+    <section id="carrinho" class="tab-content">
+      <h3>Meu Carrinho</h3>
+      <div id="carrinhoList">Seu carrinho está vazio.</div>
+    </section>
+  </main>
+</div>
+
+
+    
+  
+
+<!-- MODAL DE EDITAR PERFIL -->
+<div id="modalPerfil" class="modal">
+  <div class="modal-content">
+    <span class="fecharModal">&times;</span>
+
+    <h2>Editar Perfil</h2>
+
+    <form id="editarForm">
+      <label>Nome:</label>
+      <input type="text" id="nome" required>
+
+      <label>Nome de Usuário:</label>
+     <input type="text" id="username" required>
+
+      <label>Email:</label>
+      <input type="email" id="email" required>
+
+      <label>Telefone:</label>
+      <input type="text" id="telefone">
+
+      <label>Cidade:</label>
+      <input type="text" id="cidade">
+
+      <label>Estado:</label>  
+      <input type="text" id="estado">
+
+      <label>Endereço:</label>
+      <input type="text" id="endereco">
+
+      <button type="submit">Salvar alterações</button>
+    </form>
+  </div>
+</div>
+
+
+<script>
+// Alternar abas
+document.querySelectorAll(".tab").forEach((tab) => {
+  tab.addEventListener("click", () => {
+    document.querySelectorAll(".tab").forEach((t) => t.classList.remove("active"));
+    document.querySelectorAll(".tab-content").forEach((c) => c.classList.remove("active"));
+    tab.classList.add("active");
+    document.getElementById(tab.dataset.tab).classList.add("active");
+  });
+});
+
+// Carregar dados do perfil
+async function carregarPerfil() {
+  try {
+    const resposta = await fetch("http://localhost:3000/perfil", {
+      method: "GET",
+      credentials: "include" // 🔹 envia o cookie JWT
+    });
+
+    if (!resposta.ok) throw new Error("Erro ao carregar perfil");
+
+    const usuario = await resposta.json();
+
+    document.getElementById("usernameDisplay").textContent = usuario.username || "Usuário";
+    document.getElementById("emailDisplay").textContent = usuario.email || "E-mail não informado";
+    document.getElementById("nomeDisplay").textContent = usuario.nome || "-";
+    document.getElementById("telefoneDisplay").textContent = usuario.telefone || "-";
+    document.getElementById("cidadeDisplay").textContent = usuario.cidade || "-";
+    document.getElementById("estadoDisplay").textContent = usuario.estado || "-";
+    document.getElementById("enderecoDisplay").textContent = usuario.endereco || "-";
+
+
+  } catch (err) {
+    console.error("Erro ao carregar perfil:", err);
+    alert("Não foi possível carregar os dados do usuário. Faça login novamente.");
+    window.location.href = "login.html";
+  }
+}
+
+
+
+
+window.onload = carregarPerfil;
+
+async function logout() {
+  try {
+    await fetch("http://localhost:3000/logout", {
+      method: "POST",
+      credentials: "include"
+    });
+  } catch (error) {
+    console.log("Erro ao fazer logout:", error);
+  }
+
+  sessionStorage.removeItem("userEmail");
+  window.location.href = "login.html";
+}
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const modal = document.getElementById("modalPerfil");
+  const btnEditar = document.getElementById("btnEditarPerfil");
+  const fechar = document.querySelector(".fecharModal");
+  const form = document.getElementById("editarForm");
+
+  if (!btnEditar || !modal || !fechar || !form) {
+    console.warn("Elemento(s) do modal não encontrado(s). Verifique ids.");
+    return;
+  }
+
+  btnEditar.onclick = () => {
+    modal.style.display = "flex";
+
+    // preencher o formulário com os valores atuais
+    document.getElementById("nome").value = document.getElementById("nomeDisplay")?.textContent || "";
+    document.getElementById("email").value = document.getElementById("emailDisplay")?.textContent || "";
+    document.getElementById("username").value = document.getElementById("usernameDisplay")?.textContent || "";
+
+    document.getElementById("telefone").value = document.getElementById("telefoneDisplay")?.textContent || "";
+    document.getElementById("cidade").value = document.getElementById("cidadeDisplay")?.textContent || "";
+    document.getElementById("estado").value = document.getElementById("estadoDisplay")?.textContent || "";
+    document.getElementById("endereco").value = document.getElementById("enderecoDisplay")?.textContent || "";
+  };
+
+  fechar.onclick = () => modal.style.display = "none";
+  window.onclick = (e) => { if (e.target === modal) modal.style.display = "none"; };
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const dados = {
+      nome: document.getElementById("nome").value,
+        username: document.getElementById("username").value,
+      email: document.getElementById("email").value,
+      telefone: document.getElementById("telefone").value,
+      cidade: document.getElementById("cidade").value,
+      estado: document.getElementById("estado").value,
+      endereco: document.getElementById("endereco").value
+    };
+
+    try {
+      const res = await fetch("http://localhost:3000/atualizar-perfil", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify(dados)
+      });
+      const json = await res.json();
+      alert(json.message || json.error || "Atualizado");
+      modal.style.display = "none";
+
+      // atualiza a página com os novos dados
+      document.getElementById("nomeDisplay").textContent = dados.nome;
+      document.getElementById("usernameDisplay").textContent = dados.username;
+      document.getElementById("emailDisplay").textContent = dados.email;
+      document.getElementById("telefoneDisplay").textContent = dados.telefone;
+      document.getElementById("cidadeDisplay").textContent = dados.cidade;
+      document.getElementById("estadoDisplay").textContent = dados.estado;
+      document.getElementById("enderecoDisplay").textContent = dados.endereco;
+    } catch (err) {
+      console.error("Erro ao atualizar perfil:", err);
+      alert("Erro ao atualizar. Veja console.");
+    }
+  });
+});
+
+</script>
+
+
+
+
+</body>
+</html>

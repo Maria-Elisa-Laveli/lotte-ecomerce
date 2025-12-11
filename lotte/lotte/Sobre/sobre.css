@@ -1,0 +1,108 @@
+ /* geral */
+body {
+    background-color: #f8f6f2; 
+    color: #5a3e36; 
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* cont principal */
+  .sobre-container {
+    max-width: 900px;
+    margin: 100px auto 60px;
+    background-color: #fffaf8; 
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(150, 120, 110, 0.1);
+    padding: 40px 60px;
+    text-align: center;
+    animation: fadeIn 1.2s ease;
+  }
+  
+  /* titulo */
+  .sobre-container h1 {
+    font-size: 2.2rem;
+    color: #b36a5e; 
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+  }
+  
+  /* linha decorativa */
+  .decor-line {
+    width: 80px;
+    height: 3px;
+    background-color: #f4b2a5;
+    margin: 0 auto 30px;
+    border-radius: 2px;
+  }
+  
+  /* texto princi´pla */
+  .sobre-container p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #5a3e36;
+    margin-bottom: 20px;
+    text-align: justify;
+  }
+  
+  /* destaque */
+  .sobre-container strong {
+    color: #d4817b; 
+    font-weight: 600;
+  }
+  
+  /* footer */
+  .sobre-container .agradecimento {
+    font-style: italic;
+    color: #8b6b62;
+    margin-top: 30px;
+  }
+
+  /* voltarrrr */
+.voltar-btn {
+    display: inline-block;
+    margin-top: 35px;
+    padding: 12px 28px;
+    background-color: #f4b2a5; 
+    color: #5a3e36; 
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 30px;
+    box-shadow: 0 3px 6px rgba(150, 120, 110, 0.15);
+    transition: all 0.3s ease;
+  }
+  
+  .voltar-btn:hover {
+    background-color: #d4817b; 
+    color: #fffaf8; 
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(150, 120, 110, 0.25);
+  }
+  
+  /*framesss*/
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* responsividadeeee */
+  @media (max-width: 768px) {
+    .sobre-container {
+      padding: 30px 25px;
+      margin: 60px 20px;
+    }
+  
+    .sobre-container h1 {
+      font-size: 1.8rem;
+    }
+  
+    .sobre-container p {
+      font-size: 1rem;
+    }
+  }

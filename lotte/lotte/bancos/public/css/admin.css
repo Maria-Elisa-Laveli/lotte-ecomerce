@@ -1,0 +1,132 @@
+body {
+  background-color: #fffaf8;
+  font-family: 'Poppins', sans-serif;
+  color: #5a3e36;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 850px;
+  margin: 40px auto;
+  background-color: white;
+  border: 2px solid #d78974;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 0 10px rgba(90, 62, 54, 0.1);
+}
+
+h1, h2 {
+  text-align: center;
+  color: #5a3e36;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+input, textarea {
+  padding: 10px;
+  border: 1px solid #f4b2a5;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+button {
+  background-color: #b26151;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background-color: rgb(216, 153, 136);
+}
+
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.product-card {
+  border: 1px solid #482f29;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #fffaf8;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+}
+
+.product-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.product-card h3 {
+  margin: 10px 0 5px;
+  color: #5a3e36;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.actions button {
+  flex: 1;
+  font-size: 13px;
+  padding: 6px;
+}
+
+.actions .edit {
+  background-color: #31baa3;
+}
+
+.actions .delete {
+  background-color: #c81a1a;
+}
+
+input, textarea, select {
+  padding: 10px;
+  border: 1px solid #f4b2a5;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.product-item button {
+  margin: 5px;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.product-item button:nth-child(odd) {
+  background-color: #ffc107;
+}
+
+.product-item button:nth-child(even) {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.product-item button:hover {
+  opacity: 0.9;
+}

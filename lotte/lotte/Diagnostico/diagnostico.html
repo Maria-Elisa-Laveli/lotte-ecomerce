@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diagnóstico Capilar</title>
+  <link rel="icon" type="image/png" href="laco.png">
+  <link rel="stylesheet" href="diagnostico.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+<header>
+  <div class="logo">
+    <img src="lotte.png" alt="Logo Lotte">
+  </div>
+
+  <nav class="menu">
+    <ul>
+      <li><a href="Diagnostico/diagnostico.html">Diagnóstico Online</a></li>
+      <li><a href="facial/templates/index.html">Facial</a></li>
+      <li><a href="#">Produtos</a></li>
+      <li><a href="#">Kits</a></li>
+      <li><a href="#">Ofertas</a></li>
+      <li><a href="bancos/admin.html">Admin</a></li>
+      <li><a href="Sobre/sobre.html">Sobre</a></li>
+    </ul>
+  </nav>
+
+  <div class="icons">
+    <a href="Busca/busca.html"><img class="busca" src="busca.png"></a>
+    <a href="Favoritos/favoritos.html"><img class="favoritos" src="favoritos.png"></a>
+    <a href="bancos/public/login.html"><img class="conta" src="conta.png"></a>
+    <a href="Carrinho/carrinho.html"><img class="carrinho" src="3.png"></a>
+  </div>
+</header>
+
+<div class="title">
+  <h1>Descubra seu Cronograma Capilar</h1>
+  <p>Responda ao diagnóstico e receba um plano personalizado.</p>
+</div>
+
+<main class="quiz-container">
+
+  <!-- FORMULÁRIO -->
+  <form id="quizForm">
+
+    <fieldset>
+      <h2>1. Qual é o seu tipo de cabelo?</h2>
+      <label><input type="radio" name="tipo" value="liso"> Liso</label>
+      <label><input type="radio" name="tipo" value="ondulado"> Ondulado</label>
+      <label><input type="radio" name="tipo" value="cacheado"> Cacheado</label>
+      <label><input type="radio" name="tipo" value="crespo"> Crespo</label>
+    </fieldset>
+
+    <fieldset>
+      <h2>2. Principal necessidade?</h2>
+      <label><input type="radio" name="necessidade" value="frizz"> Controlar frizz</label>
+      <label><input type="radio" name="necessidade" value="ressecamento"> Ressecamento</label>
+      <label><input type="radio" name="necessidade" value="queda"> Queda</label>
+      <label><input type="radio" name="necessidade" value="brilho"> Brilho</label>
+    </fieldset>
+
+    <fieldset>
+      <h2>3. Possui química ou coloração?</h2>
+      <label><input type="radio" name="quimica" value="sim"> Sim</label>
+      <label><input type="radio" name="quimica" value="nao"> Não</label>
+    </fieldset>
+
+    <fieldset>
+      <h2>4. Frequência de lavagem</h2>
+      <label><input type="radio" name="lavagem" value="diaria"> Todos os dias</label>
+      <label><input type="radio" name="lavagem" value="media"> 3 a 4 vezes</label>
+      <label><input type="radio" name="lavagem" value="baixa"> 1 a 2 vezes</label>
+    </fieldset>
+
+    <fieldset>
+      <h2>5. Qual seu objetivo?</h2>
+      <label><input type="radio" name="objetivo" value="forca"> Força</label>
+      <label><input type="radio" name="objetivo" value="crescimento"> Crescimento</label>
+      <label><input type="radio" name="objetivo" value="brilho"> Brilho</label>
+      <label><input type="radio" name="objetivo" value="definicao"> Definição</label>
+    </fieldset>
+
+    <button type="submit" class="submit-btn">Gerar Cronograma</button>
+  </form>
+
+  <!-- RESULTADO -->
+  <section id="resultado" class="resultado hidden">
+    <h2>Seu cronograma capilar personalizado</h2>
+    <div id="cronograma"></div>
+    <button onclick="window.location.reload()">Refazer diagnóstico</button>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="footer-brand">
+      <img src="lotte.png">
+      <p>Cuidado capilar inteligente e personalizado</p>
+    </div>
+
+    <div class="footer-links">
+      <a href="#">Política de Privacidade</a>
+      <a href="#">Termos de Uso</a>
+      <a href="#">Contato</a>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2025 Lotte. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<script src="diagnostico.js"></script>
+</body>
+</html>

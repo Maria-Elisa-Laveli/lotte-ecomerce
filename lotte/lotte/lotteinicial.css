@@ -1,0 +1,473 @@
+ /* Reset básico */
+* {
+ 
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f2e8aa;
+  color: #333;
+}
+
+/* Cabeçalho */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 30px;
+  background: #fffcf1;
+  position: relative;
+}
+
+
+/* Logo */
+.logo img {
+  width: 100px;   /* Desktop */
+  height: auto;
+  position: relative;
+  top: -3px;      /* ajusta vertical */
+}
+
+/* Menu */
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+@font-face {
+  font-family: 'MontserratBold';
+  src: url('Montserrat/static/Montserrat-Regular.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #b37c59;
+  font-weight: 500;
+  font-size: 17px;
+  transition: color 0.2s ease;
+  font-family: 'MontserratBold', sans-serif;
+}
+
+nav ul li a:hover {
+  color: #fe87ab;
+}
+
+/* Ícones */
+.icons {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 18px;
+  cursor: pointer;
+}
+.busca {
+  width: 30px;
+  height: 30px;
+}
+.favoritos {
+  width: 30px;
+  height: 30px;
+}
+.conta {
+  width: 30px;
+  height: 30px;
+}
+.carrinho {
+  width: 60px;
+  height: 60px;
+}
+
+/* Botão hambúrguer (só aparece no mobile) */
+.hamburger {
+  display: none;
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Banner */
+.banner {
+  text-align: center;
+  margin: 5px 0;
+}
+.banner img {
+  max-width: 95%;
+  border-radius: 8px;
+}
+
+/* Produtos */
+.produtos {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+.produto {
+  text-align: center;
+}
+
+.produto img {
+  width: 120px;
+  height: auto;
+  border-radius: 5px;
+}
+
+.produto p {
+  margin-top: 10px;
+  font-weight: 500;
+}
+
+/* Rodapé */
+footer {
+  text-align: center;
+  padding: 20px;
+  background:#fffcf1;
+  margin-top: 30px;
+}
+
+/* ============================= */
+/* RESPONSIVIDADE MOBILE */
+/* ============================= */
+@media (max-width: 768px) {
+  .logo img {
+    width: 90px; /* Logo menor no mobile */
+  }
+
+  nav ul {
+    display: none;  /* Esconde menu padrão */
+    flex-direction: column;
+    gap: 15px;
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    background: #fffcf1;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+
+  nav ul.active {
+    display: flex;  /* Mostra menu ao clicar no hambúrguer */
+  }
+
+  .hamburger {
+    display: block; /* Mostra o botão no mobile */
+  }
+}
+
+
+
+/*foteerrrr*/
+.footer {  
+  border-top: 1px solid #e2cfc3;
+  background-color: #e7e0d3;
+  color: #4a3f35; 
+  padding: 40px 20px 10px;
+  font-family: "Poppins", sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 20px;
+}
+
+.footer-logo h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 28px;
+  color: #d4817b; 
+  margin-bottom: 5px;
+}
+
+.footer-logo p {
+  font-size: 14px;
+  color: #6b5b4b;
+}
+
+.footer-links {
+  display: flex;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: #4a3f35;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #d7a89e; 
+}
+
+.footer-socials a img {
+  width: 25px;
+  height: 25px;
+  margin: 0 8px;
+  transition: transform 0.3s ease;
+}
+
+.footer-socials a:hover img {
+  transform: scale(1.15);
+}
+
+.footer-bottom {
+  margin-top: 25px;
+  font-size: 13px;
+  color: #6b5b4b;
+}
+
+
+/* carrossel */
+/* Reset do carrossel - versão moderna e funcional */
+.carousel {
+  position: relative;
+  max-width: 900px;
+  margin: 40px auto;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+  background-color: #f5e9e0;
+  height: 400px;
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  height: 100%;
+}
+
+.slide {
+  flex: 0 0 100%;
+  min-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  height: 100%;
+  position: relative;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 10px;
+}
+
+/* Efeito de overlay sutil */
+.slide::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(0, 0, 0, 0.05) 100%
+  );
+  pointer-events: none;
+}
+
+/* Botões modernizados */
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 20px;
+  color: #333;
+  z-index: 10;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.prev:hover, .next:hover {
+  background: f8f6f2;
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.prev { left: 20px; }
+.next { right: 20px; }
+
+
+/*indicador*/
+.indicadores {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+}
+
+.indicador {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  border: 2px solid #f8f6f2;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.indicador.ativo {
+  background: #f4b2a5;
+  transform: scale(1.2);
+}
+
+.indicador:hover {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+
+
+/* ====================== */
+/* ESTILO DOS CARDS NOVOS */
+/* ====================== */
+
+.produtos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  padding: 20px;
+}
+
+.product-card {
+  background: #fff8f4;
+  padding: 15px;
+  width: 180px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  text-align: left;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+
+/* Imagem */
+.product-card img {
+  width: 100%;
+  height: 200px;      /* defina a altura fixa para todas */
+  object-fit: contain; /* NÃO corta — apenas ajusta */
+  background-color: #f5f5f5; /* opcional: fundo neutro */
+  padding: 10px;      /* opcional: deixa a imagem “respirar” */
+}
+
+
+/* Nome */
+.product-card h3 {
+  font-size: 16px;
+  margin: 8px 0 5px;
+  color: #6b4f3f;
+  font-weight: bold;
+}
+
+/* Preço */
+.product-card p {
+  font-size: 15px;
+  color: #b37c59;
+  font-weight: bold;
+}
+
+/* Botão de Favorito */
+.btn-favorito {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  border: none;
+  background: none;
+  font-size: 22px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  color: #bfa8a2; 
+}
+
+.btn-favorito:hover {
+  transform: scale(1.2);
+}
+
+.btn-favorito.favoritado {
+  color: #ff5d88; /* rosa da Lotte */
+  text-shadow: 0 0 6px #ffb6c9;
+}
+/* Botão Adicionar ao Carrinho */
+.btn-add-cart {
+  display: block;
+  width: 100%;
+  padding: 10px 0;
+  margin-top: 10px;
+  border: none;
+  border-radius: 8px;
+  background-color: #ff87ab; /* rosa da Lotte */
+  color: #fff;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.btn-add-cart:hover {
+  background-color: #ff5d88; /* rosa mais escuro */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-add-cart:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+/* POPUP BONITINHO DO CARRINHO */
+.popup-carrinho {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #ffb7d5;
+  color: #4a0033;
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: all 0.4s ease;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.popup-carrinho.show {
+  opacity: 1;
+  transform: translateY(0);
+}

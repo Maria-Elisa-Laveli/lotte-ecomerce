@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carrinho - L'otte</title>
+  <link rel="stylesheet" href="carrinho.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <style>
+    .cart-item { display:flex; gap:12px; align-items:center; padding:8px 0; border-bottom:1px solid #eee; }
+    .cart-item img { width:80px; height:80px; object-fit:cover; border-radius:8px; }
+    .cart-items { display:flex; flex-direction:column; }
+    .meta { display:flex; flex-direction:column; gap:4px; }
+    .meta button { margin:2px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Meu Carrinho</h1>
+  </header>
+
+  <main class="container">
+    <div id="cart-list"></div>
+
+    <div id="cart-summary" style="margin-top:20px;">
+      <p>Subtotal: <span id="subtotal">R$ 0,00</span></p>
+      <p>Frete: <span id="shipping">R$ 0,00</span></p>
+      <p><strong>Total: <span id="total">R$ 0,00</span></strong></p>
+      <button id="btn-checkout">Finalizar Compra</button>
+    </div>
+  </main>
+
+  <!-- Modal do QR Code -->
+  <div id="qrcode-modal">
+  <div>
+    <button id="close-qrcode-modal">✖</button>
+    <h3>Seu QR Code</h3>
+    <div id="qrcode"></div>
+    <p>Obrigado por comprar com a gente! 💖</p>
+  </div>
+</div>
+<div id="added-message" class="added-message">
+  Produto adicionado ao carrinho! 🛒✨
+</div>
+
+
+<script src="carrinho.js"></script>
+</body>
+</html>
