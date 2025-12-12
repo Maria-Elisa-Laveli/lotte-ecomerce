@@ -92,7 +92,7 @@ form.addEventListener("submit", async (e) => {
   console.log("📤 Enviando cadastro:", dados);
 
   try {
-    const resposta = await fetch("http://localhost:3000/cadastro", {
+    const resposta = await fetch("https://lotte-ecomerce.onrender.com/cadastro", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(dados)

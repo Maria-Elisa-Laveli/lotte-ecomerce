@@ -1,8 +1,8 @@
 const form = document.getElementById("productForm");
 let editingProductId = null;
 
-// Base URL da API
-const API_URL = 'http://localhost:3000/api/products';
+// Base URL da API (Render)
+const API_URL = 'https://lotte-ecomerce.onrender.com/api/products';
 
 // 🧩 Listar produtos
 function renderProducts() {
@@ -67,8 +67,7 @@ function editProduct(id) {
 
       document.getElementById("name").value = prod.name || '';
       document.getElementById("brand").value = prod.brand || '';
-      document.getElementById("price").value = 
-  prod.price ? prod.price.toString().replace('.', ',') : '';
+      document.getElementById("price").value = prod.price ? prod.price.toString().replace('.', ',') : '';
       document.getElementById("stock").value = prod.stock || '';
       document.getElementById("volume").value = prod.volume || '';
       document.getElementById("category").value = prod.category || '';
@@ -147,7 +146,7 @@ function togglePublish(id, currentStatus) {
 // 🔁 Carregar produtos ao abrir a página
 document.addEventListener("DOMContentLoaded", renderProducts);
 
-//botao de voltar
+// 🔙 Botão voltar
 document.getElementById("backBtn").addEventListener("click", () => {
-  window.location.href = "../../index.html"; // caminho relativo para o index.html
+  window.location.href = "../../index.html";
 });

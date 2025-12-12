@@ -13,7 +13,7 @@ form.addEventListener("submit", async (e) => {
   };
 
   try {
-    const res = await fetch("/cadastro", {
+        const res = await fetch("https://lotte-ecomerce.onrender.com/cadastro", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data)

@@ -12,7 +12,7 @@ hamburger.addEventListener("click", () => {
 // FAVORITOS (LOCALSTORAGE)
 // ==========================
 async function toggleFavorite(productId) {
-  const auth = await fetch("http://localhost:3000/checkAuth", {
+  const auth = await fetch("https://lotte-ecomerce.onrender.com/checkAuth", {
     credentials: "include"
   }).then(r => r.json());
 
@@ -26,12 +26,12 @@ async function toggleFavorite(productId) {
   const isFavorited = botao.classList.contains("favoritado");
 
   if (isFavorited) {
-    await fetch(`http://localhost:3000/favoritos/${productId}`, {
+    await fetch(`https://lotte-ecomerce.onrender.com/favoritos/${productId}`, {
       method: "DELETE",
       credentials: "include"
     });
   } else {
-    await fetch(`http://localhost:3000/favoritos/${productId}`, {
+    await fetch(`https://lotte-ecomerce.onrender.com/favoritos/${productId}`, {
       method: "POST",
       credentials: "include"
     });
@@ -81,15 +81,15 @@ function renderProducts(products, favoritosUsuario = []) {
 }
 async function carregarProdutos() {
   try {
-    const resposta = await fetch("http://localhost:3000/api/products");
+    const resposta = await fetch("https://lotte-ecomerce.onrender.com/api/products");
     const produtos = await resposta.json();
 
-    const auth = await fetch("http://localhost:3000/checkAuth", { credentials: "include" })
+    const auth = await fetch("https://lotte-ecomerce.onrender.com/checkAuth", { credentials: "include" })
       .then(r => r.json());
 
     let favoritosUsuario = [];
     if (auth.autenticado) {
-      const favs = await fetch("http://localhost:3000/favoritos", { credentials: "include" })
+      const favs = await fetch("https://lotte-ecomerce.onrender.com/favoritos", { credentials: "include" })
         .then(r => r.json());
       favoritosUsuario = favs.map(f => f._id);
     }
@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", carregarProdutos);
 async function addToCart(productId) {
   try {
     // Pega os produtos do backend
-    const resposta = await fetch(`http://localhost:3000/api/products/${productId}`);
+    const resposta = await fetch(`https://lotte-ecomerce.onrender.com/api/products/${productId}`);
     if (!resposta.ok) throw new Error("Produto não encontrado");
     const produto = await resposta.json();
 

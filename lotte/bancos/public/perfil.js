@@ -17,7 +17,7 @@ document.querySelector("[data-tab='favoritos']").addEventListener("click", () =>
 // Função para carregar dados do perfil
 async function carregarPerfil() {
   try {
-    const resposta = await fetch("http://localhost:3000/perfil", {
+    const resposta = await fetch("https://lotte-ecomerce.onrender.com/perfil", {
       method: "GET",
       credentials: "include" // envia o cookie JWT
     });
@@ -54,7 +54,7 @@ window.onload = carregarPerfil;
 // Logout global
 window.logout = async function() {
   try {
-    await fetch("http://localhost:3000/logout", {
+    await fetch("https://lotte-ecomerce.onrender.com/logout", {
       method: "POST",
       credentials: "include" // envia o cookie para apagar
     });

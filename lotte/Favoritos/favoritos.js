@@ -1,5 +1,5 @@
 // lotte/favoritos/favoritos.js
-const BASE_URL = "http://localhost:3000";
+const BASE_URL = "https://lotte-ecomerce.onrender.com";
 
 async function loadFavorites() {
   const favoritesArea = document.getElementById("favoritesArea");
@@ -9,7 +9,7 @@ async function loadFavorites() {
   }
 
   // 1️⃣ VERIFICA LOGIN
-  const auth = await fetch("http://localhost:3000/checkAuth", {
+  const auth = await fetch("https://lotte-ecomerce.onrender.com/checkAuth", {
 
     credentials: "include"
   }).then(r => r.json()).catch(() => ({ autenticado: false }));
@@ -23,7 +23,7 @@ async function loadFavorites() {
   }
 
   // 2️⃣ BUSCA FAVORITOS DO BANCO
- const favProducts = await fetch("http://localhost:3000/favoritos", {
+ const favProducts = await fetch("https://lotte-ecomerce.onrender.com/favoritos", {
 
     credentials: "include"
   }).then(r => r.json()).catch(() => []);

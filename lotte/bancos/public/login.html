@@ -48,7 +48,7 @@ document.getElementById("formLogin").addEventListener("submit", async (e) => {
   const dados = Object.fromEntries(new FormData(e.target));
 
   try {
-    const resposta = await fetch("http://localhost:3000/login", {
+    const resposta = await fetch("https://lotte-ecomerce.onrender.com/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(dados),
