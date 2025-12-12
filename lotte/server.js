@@ -32,9 +32,8 @@ app.use(cors({
 
 app.use(cookieParser());
 app.use(bodyParser.json());
-app.use("/public", express.static(path.join(__dirname, "public")));
-app.use("/", express.static(path.join(__dirname, "../../")));
-
+app.use("/public", express.static(path.join(__dirname, "bancos/public")));
+app.use("/", express.static(path.join(__dirname)));
 // ====================
 // 🔗 CONEXÃO COM MONGODB
 // ====================
