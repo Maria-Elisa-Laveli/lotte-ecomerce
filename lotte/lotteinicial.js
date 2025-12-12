@@ -18,7 +18,7 @@ async function toggleFavorite(productId) {
 
   if (!auth.autenticado) {
     alert("Você precisa estar logado para favoritar.");
-    window.location.href = "/bancos/public/login.html";
+    window.location.href = "/public/login.html";
     return;
   }
 

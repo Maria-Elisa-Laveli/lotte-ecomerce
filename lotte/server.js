@@ -26,7 +26,8 @@ console.log("🔑 API Key carregada:", process.env.GEMINI_API_KEY ? "SIM ✅" : 
 const app = express();
 
 app.use(cors({
-  origin: true,
+ origin: ["https://lotte-ecomerce.onrender.com", "http://localhost:3000"],
+
   credentials: true
 }));
 
@@ -34,6 +35,7 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 app.use("/public", express.static(path.join(__dirname, "bancos/public")));
 app.use("/", express.static(path.join(__dirname)));
+
 // ====================
 // 🔗 CONEXÃO COM MONGODB
 // ====================
@@ -148,11 +150,11 @@ app.post("/login", async (req, res) => {
   );
 
   res.cookie("token", token, {
-    httpOnly: true,
-    maxAge: 7 * 24 * 60 * 60 * 1000,
-    sameSite: "lax",
-    secure: false
-  });
+  httpOnly: true,
+  maxAge: 7 * 24 * 60 * 60 * 1000,
+  sameSite: "none",
+  secure: process.env.NODE_ENV === "production" // true no Render
+});
 
   res.json({ message: "Login bem-sucedido!" });
 });
@@ -174,7 +176,7 @@ app.post("/recuperar", async (req, res) => {
     auth: { user: process.env.EMAIL_USER, pass: process.env.EMAIL_PASS }
   });
 
-  const resetLink = `http://localhost:3000/resetar.html?token=${token}`;
+ const resetLink = `https://lotte-ecomerce.onrender.com/resetar.html?token=${token}`;
 
   try {
     await transporter.sendMail({
